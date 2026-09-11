@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "高铁出发 · 12306 购票助手",
+  "version": "0.2.2",
+  "description": "在 12306 官方网页定时查询，选择席别和乘车人，设置座位及静音车厢偏好后尝试提交至待支付。",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "scripting",
+    "webRequest",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://kyfw.12306.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "高铁出发"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://kyfw.12306.cn/otn/*"
+      ],
+      "js": [
+        "core.js",
+        "adapter.js",
+        "panel.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "incognito": "not_allowed"
+}

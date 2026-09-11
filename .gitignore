@@ -1,0 +1,13 @@
+# Local browser profiles and test output
+work/
+test-results/
+playwright-report/
+node_modules/
+*.log
+
+# Local credentials and editor/system files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>高铁出发</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header><span class="logo">↗</span><div><h1>高铁出发</h1><p>12306 网页助手 · 选席与偏好</p></div><span class="tag">本地版 0.2.2</span></header>
+<main>
+<div class="intro"><b>把行程准备好，起售时开始。</b><p>先在官网登录，并保存好成人乘车人。插件自动操作官方网页，支付由你完成。</p><a href="https://kyfw.12306.cn/otn/resources/login.html" target="_blank" rel="noopener">打开 12306 登录 ↗</a> <button id="showPanel" type="button">显示网页面板</button></div>
+<form id="form">
+<fieldset id="fields">
+<div class="pair"><label>出发站<input id="from" list="stations" placeholder="如：北京南" required autocomplete="off"></label><label>到达站<input id="to" list="stations" placeholder="如：上海虹桥" required autocomplete="off"></label></div>
+<datalist id="stations"></datalist>
+<div class="pair"><label>乘车日期<input id="date" type="date" required></label><label>购票席别<select id="seatKey"></select></label></div>
+<div class="pair"><label>座位偏好<select id="position"><option value="CD">靠过道 C / D</option><option value="AF">靠窗 A / F</option><option value="A">A 位</option><option value="B">B 位</option><option value="C">C 位</option><option value="D">D 位</option><option value="F">F 位</option><option value="auto">自动分配</option></select></label><label class="mode"><input id="quiet" type="checkbox" checked><div><b>优先静音车厢</b><small>官网提供可用选项时勾选</small></div></label></div>
+<p class="hint">只购买所选席别。座位偏好不支持或数量不足时自动分配；卧铺上下铺由官网分配。最终席位以出票为准。</p>
+<label>目标车次 <span>选填；留空匹配所选日期全部车次</span><input id="trains" placeholder="留空不限车次；指定如 G101,G103" maxlength="100" autocomplete="off"></label>
+<p class="hint">不限车次时，按官网列表顺序选择当前区间有足够所选席别余票的车次，可能包含清晨或晚间发车。</p>
+<label>成人乘车人 <span>与官网姓名一致，逗号分隔</span><input id="passengers" placeholder="张三,李四" required maxlength="300" autocomplete="off"></label>
+<details><summary>定时开始与查询设置</summary>
+<label>起售时间 <span>北京时间；留空立即开始</span><input id="saleTime" type="datetime-local" step="1"></label>
+<div class="pair"><label>查询间隔 / 秒<input id="interval" type="number" min="10" max="120" value="15" required></label><label>持续查询 / 分钟<input id="duration" type="number" min="1" max="120" value="30" required></label></div>
+<p class="hint">起售时间请以 12306 为准。间隔从上次查询结束后计算，异常时延长；起售首轮不额外等待此间隔。</p>
+</details>
+<label class="mode"><input id="autoSubmit" type="checkbox" checked><div><b>自动提交到待支付</b><small>行程、成人乘车人和所选席别核对后提交，在确认页设置偏好并确认。取消勾选可演练至选好席别。</small></div></label>
+</fieldset>
+<label id="reviewRow" class="mode" hidden><input id="reviewed" type="checkbox"><small>我已查看 12306 未完成订单，确认可以开始新的购票任务。</small></label>
+<div class="actions"><button id="start" type="submit">启动购票助手 ↗</button><button id="stop" type="button" class="secondary">停止</button></div>
+</form>
+<div id="status" class="status" role="status" aria-live="polite">尚未启动</div>
+<p class="footnote">请保持任务网页在前台、电脑不休眠。登录、验证码或异常提示需手动处理；不保证有票或起售时准点执行。</p>
+<footer><a href="guide.html" target="_blank">安装与使用说明</a><button id="clear" type="button">清除本地设置</button></footer>
+</main><script src="core.js"></script><script src="popup.js"></script></body></html>
