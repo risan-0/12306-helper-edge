@@ -4,7 +4,8 @@
 
 ## 安装与升级
 
-解压，在 Edge 打开 edge://extensions，开启开发人员模式，加载直接包含 manifest.json 的 rail-helper-edge 文件夹。无需 Python 或 Node.js。
+下载code.zip压缩包，在本地解压。
+解压后，在 Edge 打开 edge://extensions，开启开发人员模式，加载直接包含 manifest.json 的 rail-helper-edge 文件夹。无需 Python 或 Node.js。
 升级前停止任务，覆盖原目录，在扩展管理页点击重新加载，关闭旧任务网页后重新启动。已发出的订单请求须先在官网检查。
 
 ## 最终确认生效检查
